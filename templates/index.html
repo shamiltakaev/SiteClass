@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for job, user in data %}
+    <h3>Action # {{ job.id }}</h3>
+    <div>
+        <table class="table"  style="text-align: center;">
+            <tr>
+                <td class="title" width="30%">Title of activity</td>
+                <td class="title" width="20%">Team leader</td>
+                <td class="title" width="10%">Duration</td>
+                <td class="title" width="20%">List of collaborators</td>
+                <td class="title" width="20%">Is finished</td>
+            </tr>
+            <tr>
+                <td class="ordinary">{{ job.job.capitalize() }}</td>
+                <td class="ordinary">{{ user.surname }} {{ user.name }}</td>
+                <td class="ordinary">{{ job.work_size }} hours</td>
+                <td class="ordinary">{{ job.collaborators }}</td>
+                {% if job.is_finished %}
+                <td class="ordinary">Finished</td>
+                {% else %}
+                <td class="ordinary" style="background: #ffeeff;">Is not finished</td>
+                {% endif %}
+            </tr>
+        </table>
+    </div>
+{% endfor %}
+{% endblock %}
